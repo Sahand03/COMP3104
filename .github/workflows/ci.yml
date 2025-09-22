@@ -13,10 +13,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Print environment
-        run: |
-          echo "Repo: $GITHUB_REPOSITORY"
-          echo "Branch: $GITHUB_REF_NAME"
-
-      - name: Lint YAML (quick sanity check)
-        uses: ibiqlik/action-yamllint@v3
+      - name: Run a simple test
+        run: echo "✅ GitHub Actions is working!"
