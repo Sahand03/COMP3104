@@ -1,0 +1,16 @@
+  621  nano src/App.js\n
+  622  cd ~/COMP3104
+  623  cd src\n
+  624  nano App.js\n
+  625  ls
+  626  nano App.js\n
+  627  npm start
+  628  npx create-react-app spa-app\n
+  629  cd spa-app
+  630  nano src/App.js\n
+  631  npm start
+  632  git checkout dep-inclusions\ngit push origin dep-inclusions\n
+  633  cd ~/COMP3104\n
+  634  git checkout -b dep-inclusions\n
+  635  git push -u origin dep-inclusions\n
+  636  cd ~/COMP3104\ngit switch dep-inclusions   # just to be sure you’re on the right branch\n\n# make a change to README.md\necho "Dependency note $(date)" >> README.md\ngit add README.md\ngit commit -m "dep-inclusions: add dependency note"\n\n# make a small change to sum.test.js\necho "// placeholder change $(date)" >> sum.test.js\ngit add sum.test.js\ngit commit -m "dep-inclusions: tweak test file"\n\n# push the commits to GitHub\ngit push\n
