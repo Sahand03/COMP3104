@@ -1,28 +1,25 @@
 language: node_js
 node_js:
-  - "stable"
-
-branches:
-  only:
-    - dep-inclusions
+  - "16"
 
 cache:
   directories:
     - node_modules
 
 install:
-  - npm install
-  - npm install -g yarn
+  - npm ci
 
 script:
-  # - yarn lint
-  - yarn build
+  - npm test -- --ci
+
+before_deploy:
+  - npm run build
   - mv build/index.html build/404.html
 
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $github_token
+  github_token: $GITHUB_TOKEN
   local_dir: build
   on:
     branch: dep-inclusions
