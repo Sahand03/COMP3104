@@ -1,20 +1,28 @@
 language: node_js
 node_js:
-  - 14
+  - "stable"
 
 cache:
   directories:
     - node_modules
 
-script:
+install:
   - npm install
-  - npm run build
+  - npm install -g yarn
+
+script:
+  - yarn build
+  - mv build/index.html build/404.html
 
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Travis environment variable
+  github_token: $github_token
   local_dir: build
   on:
-    branch: dep-inclusions
+    branch: dep-inclusions   # deploy from this branch for now
+
+branches:
+  only:
+    - dep-inclusions         # trigger builds on this branch
 
