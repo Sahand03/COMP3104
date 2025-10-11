@@ -2,6 +2,10 @@ language: node_js
 node_js:
   - "stable"
 
+branches:
+  only:
+    - dep-inclusions
+
 cache:
   directories:
     - node_modules
@@ -17,12 +21,8 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $github_token
+  github_token: $GITHUB_TOKEN
   local_dir: build
   on:
-    branch: dep-inclusions   # deploy from this branch for now
-
-branches:
-  only:
-    - dep-inclusions         # trigger builds on this branch
+    branch: dep-inclusions
 
