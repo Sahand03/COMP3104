@@ -3,7 +3,8 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - dep-inclusions  # or main, if you want main to trigger deployment
+      - main
+      - dep-inclusions  # optional: trigger from this branch too
 
 jobs:
   build:
