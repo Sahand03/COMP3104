@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - dep-inclusions  # optional: trigger from this branch too
+      - dep-inclusions  # optional: allows deployment from this branch too
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
@@ -30,4 +30,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+
           
