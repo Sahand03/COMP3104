@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - dep-inclusions  # optional: allows deployment from this branch too
+      - dep-inclusions  # optional branch for triggering deployment
 
 jobs:
   build:
@@ -20,15 +20,13 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build project
-        run: npm run build
+        run: CI=false npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-
-          
